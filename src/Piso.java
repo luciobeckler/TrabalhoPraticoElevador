@@ -1,7 +1,8 @@
 public class Piso {
   // *Variáveis globais
   private int andar;
-  private String painelExterno = "";
+  private boolean subir;
+  private boolean descer; // True: subir False: descer
 
   // *Construtor
   public Piso(int andar) {
@@ -13,8 +14,12 @@ public class Piso {
     return andar;
   }
 
-  public String getPainelExterno() {
-    return painelExterno;
+  public boolean getSubir() {
+    return subir;
+  }
+
+  public boolean getDescer() {
+    return descer;
   }
 
   // *Setters
@@ -22,8 +27,12 @@ public class Piso {
     this.andar = andar;
   }
 
-  public void setPainelExterno(String painelExterno) {
-    this.painelExterno = painelExterno;
+  public void setSubir(boolean subir) {
+    this.subir = subir;
+  }
+
+  public void setDescer(boolean descer) {
+    this.descer = descer;
   }
 
 }
