@@ -1,39 +1,45 @@
 public class Elevador {
   private boolean estadoPorta; // true -> abertp false -> fechado
-  private boolean direcao; // true -> subindo false -> descendo
+  private boolean subindo;
+  private boolean descendo;
   private int pisoAtual;
 
   // Construtor
   public Elevador() {
     this.setPisoAtual(0);
-    this.setEstadoPorta(false);
-    this.setDirecao(true);
+    this.fecharPorta();
+    this.subindo = true;
   }
 
   // Setter
-  public boolean isEstadoPorta() {
-    return estadoPorta;
-  }
-
-  public boolean isDirecao() {
-    return direcao;
-  }
-
   public void setPisoAtual(int pisoAtual) {
     this.pisoAtual = pisoAtual;
   }
 
   // Getters
-  public void setEstadoPorta(boolean estadoPorta) {
-    this.estadoPorta = estadoPorta;
+  public boolean isPortaAberta() {
+    return estadoPorta;
   }
 
-  public void setDirecao(boolean direcao) {
-    this.direcao = direcao;
+  public boolean isSubindo() {
+    return subindo;
+  }
+
+  public boolean isDesendo() {
+    return descendo;
   }
 
   public int getPisoAtual() {
     return pisoAtual;
+  }
+
+  // Demais métodos
+  public void abrirPorta() {
+    this.estadoPorta = true;
+  }
+
+  public void fecharPorta() {
+    this.estadoPorta = false;
   }
 
 }

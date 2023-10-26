@@ -8,20 +8,20 @@ public class Predio {
         }
     }
 
-    public void queroSubir(int numeroPiso) {
+    public void isqueroSubir(int numeroPiso) {
         if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
             pisos[numeroPiso - 1].setSubir(true);
         }
     }
 
-    public void queroDescer(int numeroPiso) {
+    public void isqueroDescer(int numeroPiso) {
         if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
             pisos[numeroPiso - 1].setDescer(true);
         }
     }
 
     // True: queroSubir False: queroDescer
-    public void imprimirPainelExterno(int numeroPiso) {
+    public void mostrarPainel(int numeroPiso) {
         if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
             Piso piso = pisos[numeroPiso - 1];
             // A linha a seguir imprime o painel externo do piso
@@ -45,9 +45,9 @@ public class Predio {
 
     public static void main(String[] args) throws Exception {
         Predio predio = new Predio(5);
-        predio.queroSubir(3); // Indica que quer subir para o terceiro piso
-        predio.imprimirPainelExterno(1); // Imprime o painel do terceiro piso
-        predio.queroDescer(2); // Indica que quer descer do segundo piso
-        predio.imprimirPainelExterno(2); // Imprime o painel do segundo piso
+        predio.isqueroSubir(3); // Indica que quer subir para o terceiro piso
+        predio.mostrarPainel(1); // Imprime o painel do terceiro piso
+        predio.isqueroDescer(2); // Indica que quer descer do segundo piso
+        predio.mostrarPainel(2); // Imprime o painel do segundo piso
     }
 }
