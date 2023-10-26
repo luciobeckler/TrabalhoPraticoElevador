@@ -1,43 +1,53 @@
 public class Predio {
+    private Piso[] pisos; // Pisos conectados através de ums lista de pisos
 
-    // Criar uma instância da classe Piso
-    Piso piso1 = new Piso(2);
-
-    public static void main(String[] args) throws Exception {
-        Predio predio = new Predio();
-        predio.queroSubir();
-        predio.imprimirPainelExterno();
-        predio.queroDescer();
-        predio.imprimirPainelExterno();
-        System.out.println("Hello, World!");
+    public Predio(int quantPisos) {
+        pisos = new Piso[quantPisos]; // Inicializa o array de pisos com o tamanho especificado
+        for (int i = 0; i < quantPisos; i++) {
+            pisos[i] = new Piso(i + 1); // Cria e inicializa cada piso
+        }
     }
 
-    // Método para indicar que você quer subir no piso
-    public void queroSubir() {
-        piso1.setSubir(true);
+    public void queroSubir(int numeroPiso) {
+        if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
+            pisos[numeroPiso - 1].setSubir(true);
+        }
     }
 
-    public void queroDescer() {
-        piso1.setDescer(true);
+    public void queroDescer(int numeroPiso) {
+        if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
+            pisos[numeroPiso - 1].setDescer(true);
+        }
     }
 
     // True: queroSubir False: queroDescer
-    public void imprimirPainelExterno() {
-        // A linha a seguir imprime o painel externo do piso
-        StringBuilder painel = new StringBuilder(); // Usando StringBuilder para concatenar Strings eficientemente
-        int andar = piso1.getAndar(); // Convertendo o int para String
-        painel.append(Integer.toString(andar));
+    public void imprimirPainelExterno(int numeroPiso) {
+        if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
+            Piso piso = pisos[numeroPiso - 1];
+            // A linha a seguir imprime o painel externo do piso
+            StringBuilder painel = new StringBuilder();
+            int andar = piso.getAndar();
+            painel.append(Integer.toString(andar));
 
-        // *Formata o input do visor externo
-        if (piso1.getSubir())
-            painel.append('\u25B2'); // Adicionando o caractere ▲
-        else
-            painel.append('\u25B3');
-        if (piso1.getDescer())
-            painel.append('\u25BC'); // Adicionando o caractere ▲
-        else
-            painel.append('\u25BD');
+            // Formata o input do visor externo
+            if (piso.getSubir())
+                painel.append('\u25B2'); // Adicionando o caractere ▲
+            else
+                painel.append('\u25B3');
+            if (piso.getDescer())
+                painel.append('\u25BC'); // Adicionando o caractere ▲
+            else
+                painel.append('\u25BD');
 
-        System.out.println(painel.toString()); // Imprimindo o painel
+            System.out.println(painel.toString()); // Imprimindo o painel
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        Predio predio = new Predio(5);
+        predio.queroSubir(3); // Indica que quer subir para o terceiro piso
+        predio.imprimirPainelExterno(1); // Imprime o painel do terceiro piso
+        predio.queroDescer(2); // Indica que quer descer do segundo piso
+        predio.imprimirPainelExterno(2); // Imprime o painel do segundo piso
     }
 }
