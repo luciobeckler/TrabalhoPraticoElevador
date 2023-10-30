@@ -44,10 +44,15 @@ public class Predio {
     }
 
     public static void main(String[] args) throws Exception {
-        Predio predio = new Predio(5);
+        Predio predio = new Predio(5); // Cria um prédio que contém 5 pisos
+        Elevador elevador = new Elevador();
         predio.isqueroSubir(3); // Indica que quer subir para o terceiro piso
         predio.mostrarPainel(1); // Imprime o painel do terceiro piso
         predio.isqueroDescer(2); // Indica que quer descer do segundo piso
         predio.mostrarPainel(2); // Imprime o painel do segundo piso
+        elevador.pararNoPiso(predio.pisos[2]);
+        System.out.println(predio.pisos[2].isparadaSolicitada());
+        System.out.println(predio.pisos[3].isparadaSolicitada());
+
     }
 }

@@ -9,6 +9,7 @@ public class Elevador {
     this.setPisoAtual(0);
     this.fecharPorta();
     this.subindo = true;
+    // !CONTINUAR DAQUI
   }
 
   // Setter
@@ -40,6 +41,14 @@ public class Elevador {
 
   public void fecharPorta() {
     this.estadoPorta = false;
+  }
+
+  public void pararNoPiso(Piso piso) {
+    piso.solicitarParada();
+  }
+
+  public void mostrarPainel() {
+    System.out.println("** Painel do Elevador ** /n teste");
   }
 
 }
