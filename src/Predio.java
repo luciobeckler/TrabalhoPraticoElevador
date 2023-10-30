@@ -1,10 +1,10 @@
 public class Predio {
-    private Piso[] pisos; // Pisos conectados através de ums lista de pisos
+    public Piso[] pisos; // Pisos conectados através de ums lista de pisos
 
     public Predio(int quantPisos) {
         pisos = new Piso[quantPisos]; // Inicializa o array de pisos com o tamanho especificado
         for (int i = 0; i < quantPisos; i++) {
-            pisos[i] = new Piso(i + 1); // Cria e inicializa cada piso
+            pisos[i] = new Piso((i + 1), this); // Cria e inicializa cada piso
         }
     }
 
@@ -45,14 +45,15 @@ public class Predio {
 
     public static void main(String[] args) throws Exception {
         Predio predio = new Predio(5); // Cria um prédio que contém 5 pisos
-        Elevador elevador = new Elevador();
+        Elevador elevador = new Elevador(predio);
         predio.isqueroSubir(3); // Indica que quer subir para o terceiro piso
         predio.mostrarPainel(1); // Imprime o painel do terceiro piso
         predio.isqueroDescer(2); // Indica que quer descer do segundo piso
         predio.mostrarPainel(2); // Imprime o painel do segundo piso
         elevador.pararNoPiso(predio.pisos[2]);
         System.out.println(predio.pisos[2].isparadaSolicitada());
-        System.out.println(predio.pisos[3].isparadaSolicitada());
+
+        elevador.mostrarPainel();
 
     }
 }

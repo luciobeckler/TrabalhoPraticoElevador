@@ -2,13 +2,16 @@ public class Elevador {
   private boolean estadoPorta; // true -> abertp false -> fechado
   private boolean subindo;
   private boolean descendo;
+  private Predio predio;
   private int pisoAtual;
+  private int quantPisos = 0;
 
   // Construtor
-  public Elevador() {
+  public Elevador(Predio predio) {
     this.setPisoAtual(0);
     this.fecharPorta();
     this.subindo = true;
+    this.predio = predio;
     // !CONTINUAR DAQUI
   }
 
@@ -48,7 +51,9 @@ public class Elevador {
   }
 
   public void mostrarPainel() {
-    System.out.println("** Painel do Elevador ** /n teste");
+    quantPisos = predio.pisos.length;
+    // !Continuar daqui, gerar o log do Painel
+    System.out.println(quantPisos);
   }
 
 }

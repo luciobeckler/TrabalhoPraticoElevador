@@ -4,9 +4,11 @@ public class Piso {
   private boolean subir;
   private boolean descer; // True: subir False: descer
   private boolean paradaSolicitada;
+  private Predio predio;
 
   // *Construtor
-  public Piso(int andar) {
+  public Piso(int andar, Predio predio) {
+    this.predio = predio;
     this.andar = andar;
   }
 
@@ -27,6 +29,10 @@ public class Piso {
     return this.paradaSolicitada;
   }
 
+  public Predio getPredio() {
+    return predio;
+  }
+
   // *Setters
   public void setAndar(int andar) {
     this.andar = andar;
@@ -38,6 +44,10 @@ public class Piso {
 
   public void setDescer(boolean descer) {
     this.descer = descer;
+  }
+
+  public void setPredio(Predio predio) {
+    this.predio = predio;
   }
 
   // * Métodos auxiliares:
