@@ -50,9 +50,6 @@ public class Predio {
         predio.mostrarPainel(1); // Imprime o painel do terceiro piso
         predio.isqueroDescer(2); // Indica que quer descer do segundo piso
         predio.mostrarPainel(2); // Imprime o painel do segundo piso
-        elevador.pararNoPiso(predio.pisos[2]);
-        System.out.println(predio.pisos[2].isparadaSolicitada());
-
         elevador.mostrarPainel();
 
     }

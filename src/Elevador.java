@@ -4,7 +4,7 @@ public class Elevador {
   private boolean descendo;
   private Predio predio;
   private int pisoAtual;
-  private int quantPisos = 0;
+  private Piso[] pisos;
 
   // Construtor
   public Elevador(Predio predio) {
@@ -51,9 +51,27 @@ public class Elevador {
   }
 
   public void mostrarPainel() {
-    quantPisos = predio.pisos.length;
+    pisos = predio.pisos;
+    // * Alterar estes métodos para alterar saida.
+    this.pararNoPiso(predio.pisos[2]);
+    this.pararNoPiso(predio.pisos[4]);
     // !Continuar daqui, gerar o log do Painel
-    System.out.println(quantPisos);
-  }
+    System.out.println("** Painel do Elevador **");
+    for (int i = 0; i < pisos.length; i++) {
+      if (pisos[i].isparadaSolicitada()) {
+        System.out.print(" *" + i + "* ");
+      } else {
+        System.out.print(" " + i + " ");
+      }
+    }
+    System.out.println("");
 
+    for (int i = 0; i < pisos.length; i++) {
+
+      if (this.getPisoAtual() == i) {
+        System.out.print(" ^ ");
+      } else
+        System.out.print("    ");
+    }
+  }
 }
