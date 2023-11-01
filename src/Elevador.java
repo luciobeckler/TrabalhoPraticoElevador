@@ -1,7 +1,6 @@
 public class Elevador {
-  private boolean estadoPorta; // true -> abertp false -> fechado
-  private boolean subindo;
-  private boolean descendo;
+  private boolean estadoPorta; // true -> aberta false -> fechado
+  public boolean direcao;
   private Predio predio;
   private int pisoAtual;
   private Piso[] pisos;
@@ -10,7 +9,7 @@ public class Elevador {
   public Elevador(Predio predio) {
     this.setPisoAtual(0);
     this.fecharPorta();
-    this.subindo = true;
+    this.direcao = true;
     this.predio = predio;
     // !CONTINUAR DAQUI
   }
@@ -25,12 +24,18 @@ public class Elevador {
     return estadoPorta;
   }
 
+  public boolean getDirecao() {
+    return direcao;
+  }
+
   public boolean isSubindo() {
-    return subindo;
+    direcao = true;
+    return direcao;
   }
 
   public boolean isDesendo() {
-    return descendo;
+    direcao = false;
+    return direcao;
   }
 
   public int getPisoAtual() {
@@ -59,7 +64,7 @@ public class Elevador {
     System.out.println("** Painel do Elevador **");
     for (int i = 0; i < pisos.length; i++) {
       if (pisos[i].isparadaSolicitada()) {
-        System.out.print(" *" + i + "* ");
+        System.out.print("*" + i + "*");
       } else {
         System.out.print(" " + i + " ");
       }
@@ -71,7 +76,8 @@ public class Elevador {
       if (this.getPisoAtual() == i) {
         System.out.print(" ^ ");
       } else
-        System.out.print("    ");
+        System.out.print("   ");
     }
+    System.out.println("\n");
   }
 }

@@ -56,4 +56,8 @@ public class Piso {
     this.paradaSolicitada = true;
   }
 
+  public void receberElevador(Elevador elevador) {
+
+  }
+
 }

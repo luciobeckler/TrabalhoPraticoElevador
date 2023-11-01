@@ -1,26 +1,58 @@
 public class Predio {
     public Piso[] pisos; // Pisos conectados através de ums lista de pisos
+    public Elevador elevador;
 
     public Predio(int quantPisos) {
         pisos = new Piso[quantPisos]; // Inicializa o array de pisos com o tamanho especificado
         for (int i = 0; i < quantPisos; i++) {
             pisos[i] = new Piso((i + 1), this); // Cria e inicializa cada piso
         }
+        elevador = new Elevador(this);
+
     }
 
     public void isqueroSubir(int numeroPiso) {
         if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
-            pisos[numeroPiso - 1].setSubir(true);
+            pisos[numeroPiso].setSubir(true);
         }
     }
 
     public void isqueroDescer(int numeroPiso) {
         if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
-            pisos[numeroPiso - 1].setDescer(true);
+            pisos[numeroPiso].setDescer(true);
         }
     }
 
-    // True: queroSubir False: queroDescer
+    // !Questão 7
+    public void mover(Predio predio) {
+        if (elevador.getDirecao()) {
+            if (elevador.getPisoAtual() < pisos.length - 1 && !elevador.isPortaAberta()) { // Elevador chegou no último
+                                                                                           // andar e está com a porta
+                                                                                           // fechada?
+                elevador.setPisoAtual(elevador.getPisoAtual() + 1);
+                pisos[elevador.getPisoAtual()].receberElevador(elevador);
+                /*
+                 * if(pisos[elevador.getPisoAtual()].isparadaSolicitada()){
+                 * }
+                 */
+            } else {
+                System.out.println("** Elevador chegou no último piso **");
+                elevador.isDesendo();
+                elevador.setPisoAtual(elevador.getPisoAtual() + 1);
+            }
+        } else {
+            if (elevador.getPisoAtual() > 0 && !elevador.isPortaAberta()) {// Elevador chegou no último andar e está com
+                                                                           // a porta fechada?
+                elevador.setPisoAtual(elevador.getPisoAtual() - 1);
+                pisos[elevador.getPisoAtual()].receberElevador(elevador);
+            } else {
+                System.out.println("** Elevador chegou no primeiro piso **");
+                elevador.isSubindo();
+                elevador.setPisoAtual(elevador.getPisoAtual() + 1);
+            }
+        }
+    }
+
     public void mostrarPainel(int numeroPiso) {
         if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
             Piso piso = pisos[numeroPiso - 1];
@@ -39,18 +71,20 @@ public class Predio {
             else
                 painel.append('\u25BD');
 
-            System.out.println(painel.toString()); // Imprimindo o painel
         }
     }
 
     public static void main(String[] args) throws Exception {
         Predio predio = new Predio(5); // Cria um prédio que contém 5 pisos
-        Elevador elevador = new Elevador(predio);
         predio.isqueroSubir(3); // Indica que quer subir para o terceiro piso
         predio.mostrarPainel(1); // Imprime o painel do terceiro piso
         predio.isqueroDescer(2); // Indica que quer descer do segundo piso
         predio.mostrarPainel(2); // Imprime o painel do segundo piso
-        elevador.mostrarPainel();
+        predio.elevador.mostrarPainel();
+        predio.mover(predio);
+        predio.mover(predio);
+        predio.mover(predio);
+        predio.elevador.mostrarPainel();
 
     }
 }
