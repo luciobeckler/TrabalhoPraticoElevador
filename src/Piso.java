@@ -13,6 +13,7 @@ public class Piso {
   }
 
   // *Getters
+  // !Questão 1
   public int getAndar() {
     return andar;
   }
@@ -25,7 +26,7 @@ public class Piso {
     return descer;
   }
 
-  public boolean isparadaSolicitada() {
+  public boolean isParadaSolicitada() {
     return this.paradaSolicitada;
   }
 
@@ -56,8 +57,15 @@ public class Piso {
     this.paradaSolicitada = true;
   }
 
+  // !Questão 7
   public void receberElevador(Elevador elevador) {
-
+    if (elevador.getPisoAtual() == getAndar() && isParadaSolicitada()) {
+      elevador.abrirPorta();
+    } else if (this.subir && elevador.getDirecao()) {
+      elevador.abrirPorta();
+    } else if (this.descer && !elevador.getDirecao()) {
+      elevador.abrirPorta();
+    }
   }
 
 }

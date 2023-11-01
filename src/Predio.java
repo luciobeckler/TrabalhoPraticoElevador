@@ -1,4 +1,5 @@
 public class Predio {
+    // !Questão 2
     public Piso[] pisos; // Pisos conectados através de ums lista de pisos
     public Elevador elevador;
 
@@ -11,6 +12,7 @@ public class Predio {
 
     }
 
+    // !Questão 1
     public void isqueroSubir(int numeroPiso) {
         if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
             pisos[numeroPiso].setSubir(true);
@@ -23,7 +25,7 @@ public class Predio {
         }
     }
 
-    // !Questão 7
+    // !Questão 6
     public void mover(Predio predio) {
         if (elevador.getDirecao()) {
             if (elevador.getPisoAtual() < pisos.length - 1 && !elevador.isPortaAberta()) { // Elevador chegou no último
@@ -53,6 +55,7 @@ public class Predio {
         }
     }
 
+    // !Questão 1
     public void mostrarPainel(int numeroPiso) {
         if (numeroPiso >= 1 && numeroPiso <= pisos.length) {
             Piso piso = pisos[numeroPiso - 1];

@@ -1,17 +1,19 @@
+//!Questão 3
+
 public class Elevador {
   private boolean estadoPorta; // true -> aberta false -> fechado
-  public boolean direcao;
+  private boolean direcao;
   private Predio predio;
   private int pisoAtual;
   private Piso[] pisos;
 
   // Construtor
+  // !Questão 3
   public Elevador(Predio predio) {
     this.setPisoAtual(0);
     this.fecharPorta();
     this.direcao = true;
     this.predio = predio;
-    // !CONTINUAR DAQUI
   }
 
   // Setter
@@ -51,10 +53,12 @@ public class Elevador {
     this.estadoPorta = false;
   }
 
+  // !Questão 4
   public void pararNoPiso(Piso piso) {
     piso.solicitarParada();
   }
 
+  // !Questão 5
   public void mostrarPainel() {
     pisos = predio.pisos;
     // * Alterar estes métodos para alterar saida.
@@ -63,7 +67,7 @@ public class Elevador {
     // !Continuar daqui, gerar o log do Painel
     System.out.println("** Painel do Elevador **");
     for (int i = 0; i < pisos.length; i++) {
-      if (pisos[i].isparadaSolicitada()) {
+      if (pisos[i].isParadaSolicitada()) {
         System.out.print("*" + i + "*");
       } else {
         System.out.print(" " + i + " ");
